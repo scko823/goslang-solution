@@ -1,0 +1,16 @@
+version: '2'
+services:
+  goslang-ui:
+    build: ./goslang-ui
+    volumes:
+      - data-volume:/usr/src/app/assets
+  backend:
+    build: ./backend
+    volumes:
+      - data-volume:/app/assets
+    depends_on:
+      - goslang-ui
+    ports:
+      - "8001:8080"
+volumes:
+  data-volume: {}
